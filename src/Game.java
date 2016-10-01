@@ -4,25 +4,37 @@ import java.io.BufferedReader;
 
 public class Game {
 	
+	public static boolean isInteger(String s, int radix) {
+	    if(s.isEmpty()) return false;
+	    for(int i = 0; i < s.length(); i++) {
+	        if(i == 0 && s.charAt(i) == '-') {
+	            if(s.length() == 1) return false;
+	            else continue;
+	        }
+	        if(Character.digit(s.charAt(i),radix) < 0) return false;
+	    }
+	    return true;
+	}
+	
 	public void initialize(File inputFile) throws Exception{
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		
 		// Read the first of the input file
 		String line = br.readLine();
 		int M = Integer.parseInt(line.split(" ")[0]);
-		int N = Integer.parseInt(line.split(" ")[1]);
+		//int N = Integer.parseInt(line.split(" ")[1]);
 		
 		// To do: define a map
-		Map CurMap= new Map();
+		Map CurMap= new Map();  //Define CurMap as the new map
 		// Read the following M lines of the Map
 		for (int i = 0; i < M; i++) {
 			line = br.readLine();
-			char[] mapChar = line.toCharArray();
-			int mark=0;
-			for(char a:mapChar)
+			char[] mapChar = line.toCharArray();	//Separate the string into char array
+			int mark=0;					// act as column marker
+			for(char a:mapChar)			// read each letter in char array
 			{
-				Position Temp = new Position();
-				switch(a)
+				Position Temp = new Position();		//initialize a position temp variable
+				switch(a)							// set the properties of position
 				{
 					case('#'):
 						Temp.setPosition(i, mark, "Wall");
@@ -37,7 +49,7 @@ public class Game {
 					case('D'):
 						Temp.setPosition(i, mark, "End");
 				}
-				CurMap.setMap(Temp);
+				CurMap.setMap(Temp);		//add to the arraylist in map
 				mark++;
 			}
 			// to do
@@ -47,6 +59,16 @@ public class Game {
 		// to do
 		// Find the number of stations and pokemons in the map 
 		// Continue read the information of all the stations and pokemons by using br.readLine();
+		
+		line=br.readLine();		//read information of station and pokemon 
+		if(isInteger(line,8))	//Station information if true
+		{
+			
+		}
+		else					//Pokemon information if false
+		{
+			
+		}
 		
 		br.close();
 	}
@@ -69,4 +91,8 @@ public class Game {
 		// Read the configures of the map and pokemons from the file inputFile
 		// and output the results to the file outputFile
 	}
+	
+	
+	
 }
+
