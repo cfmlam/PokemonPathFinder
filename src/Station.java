@@ -8,6 +8,16 @@ public class Station extends Position{
 		conBall=ball;
 	}
 	
+	Station(int ball)
+	{
+		conBall=ball;
+	}
+	
+	public void setPosition(int x, int y)
+	{
+		this.setPosition(x, y, "Station");
+	}
+	
 	public int getBallCount()
 	{
 		return conBall;

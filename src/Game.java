@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 
 public class Game {
 	
-	public static boolean isInteger(String s, int radix) {
+	public static boolean isInteger(String s, int radix) {		//Function to determine whether a string is number or not
 	    if(s.isEmpty()) return false;
 	    for(int i = 0; i < s.length(); i++) {
 	        if(i == 0 && s.charAt(i) == '-') {
@@ -61,13 +61,20 @@ public class Game {
 		// Continue read the information of all the stations and pokemons by using br.readLine();
 		
 		line=br.readLine();		//read information of station and pokemon 
+		String[] StringArray = line.split(", ");
+		StringArray[0] = StringArray[0].substring(1, 5);
+		String[] PosiArray = StringArray[0].split(",");
 		if(isInteger(line,8))	//Station information if true
 		{
-			
+			Station thisStat = new Station(Integer.parseInt(StringArray[1]));
+			thisStat.setPosition(Integer.parseInt(PosiArray[0]), Integer.parseInt(PosiArray[1]));
+			CurMap.setStation(thisStat);
 		}
 		else					//Pokemon information if false
 		{
-			
+			Pokemon thisPoke = new Pokemon(StringArray[1],StringArray[2],Integer.parseInt(StringArray[3]),Integer.parseInt(StringArray[4]));
+			thisPoke.setPosition(Integer.parseInt(PosiArray[0]), Integer.parseInt(PosiArray[1]));
+			CurMap.setPoke(thisPoke);
 		}
 		
 		br.close();
