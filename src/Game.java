@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.io.BufferedReader;
 
 public class Game {
@@ -45,9 +46,15 @@ public class Game {
 					case('S'):
 						Temp.setPosition(i, mark, "Station");
 					case('B'):
+					{
 						Temp.setPosition(i, mark, "Begin");
+						CurMap.setStart(i, mark);
+					}
 					case('D'):
+					{
 						Temp.setPosition(i, mark, "End");
+						CurMap.setEnd(i, mark);
+					}
 				}
 				CurMap.setMap(Temp);		//add to the arraylist in map
 				mark++;
@@ -97,9 +104,16 @@ public class Game {
 		// TO DO 
 		// Read the configures of the map and pokemons from the file inputFile
 		// and output the results to the file outputFile
+		
+		
 	}
 	
-	
-	
+	public ArrayList<Position> ValidPath(Game o) 
+	{
+		ArrayList<Position> resultPath = new ArrayList<Position>();
+		
+		
+		return resultPath;
+	}
 }
 
